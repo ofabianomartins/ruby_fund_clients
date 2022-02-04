@@ -1,3 +1,6 @@
+build:
+	docker-compose build app test
+
 up:
 	docker-compose run --service-ports app
 

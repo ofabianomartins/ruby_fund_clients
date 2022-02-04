@@ -9,6 +9,17 @@ services:
       - 3001:3001
     volumes:
       - ./:/app
+  test: 
+    build:
+      context: .
+    environment:
+      RAILS_ENV: test
+    depends_on:
+      - db
+    ports:
+      - 3001:3001
+    volumes:
+      - ./:/app
   db:
     build: 
       context: ./postgres

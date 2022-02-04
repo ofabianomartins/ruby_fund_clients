@@ -46,6 +46,6 @@ class InvestmentRedemptionTransactionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def investment_redemption_transaction_params
-      params.require(:investment_redemption_transaction).permit(:date, :value, :client_id, :fund_id)
+      param.require(:investment_redemption_transaction).permit(:date, :value, :client_id, :fund_id)
     end
 end
