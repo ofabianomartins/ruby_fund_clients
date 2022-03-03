@@ -1,5 +1,5 @@
 class InvestmentRedemptionTransactionsController < ApplicationController
-  before_action :set_investment_redemption_transaction, only: %i[ show update destroy ]
+  before_action :set_investment_redemption_transaction, only: %i[show update destroy]
 
   # GET /investment_redemption_transactions
   def index
@@ -39,13 +39,14 @@ class InvestmentRedemptionTransactionsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_investment_redemption_transaction
-      @investment_redemption_transaction = InvestmentRedemptionTransaction.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def investment_redemption_transaction_params
-      param.require(:investment_redemption_transaction).permit(:date, :value, :client_id, :fund_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_investment_redemption_transaction
+    @investment_redemption_transaction = InvestmentRedemptionTransaction.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def investment_redemption_transaction_params
+    param.require(:investment_redemption_transaction).permit(:date, :value, :client_id, :fund_id)
+  end
 end

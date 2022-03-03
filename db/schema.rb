@@ -10,38 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_28_200308) do
-
+ActiveRecord::Schema.define(version: 20_220_303_193_045) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.date "birthdate"
-    t.string "identification_number"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'clients', force: :cascade do |t|
+    t.string 'name'
+    t.date 'birthdate'
+    t.string 'identification_number'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "funds", force: :cascade do |t|
-    t.string "name"
-    t.date "creation_date"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+  create_table 'funds', force: :cascade do |t|
+    t.string 'name'
+    t.date 'creation_date'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
   end
 
-  create_table "investment_redemption_transactions", force: :cascade do |t|
-    t.date "date"
-    t.float "value"
-    t.bigint "fund_id", null: false
-    t.bigint "client_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["client_id"], name: "index_investment_redemption_transactions_on_client_id"
-    t.index ["date"], name: "index_investment_redemption_transactions_on_date"
-    t.index ["fund_id"], name: "index_investment_redemption_transactions_on_fund_id"
+  create_table 'investment_redemption_transactions', force: :cascade do |t|
+    t.date 'date'
+    t.float 'value'
+    t.bigint 'fund_id', null: false
+    t.bigint 'client_id', null: false
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['client_id'], name: 'index_investment_redemption_transactions_on_client_id'
+    t.index ['date'], name: 'index_investment_redemption_transactions_on_date'
+    t.index ['fund_id'], name: 'index_investment_redemption_transactions_on_fund_id'
   end
 
-  add_foreign_key "investment_redemption_transactions", "clients"
-  add_foreign_key "investment_redemption_transactions", "funds"
+  create_table 'securities', force: :cascade do |t|
+    t.string 'symbol'
+    t.string 'isin'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.string 'security_type'
+  end
+
+  add_foreign_key 'investment_redemption_transactions', 'clients'
+  add_foreign_key 'investment_redemption_transactions', 'funds'
 end

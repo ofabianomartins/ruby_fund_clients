@@ -1,5 +1,5 @@
 class FundsController < ApplicationController
-  before_action :set_fund, only: %i[ show update destroy ]
+  before_action :set_fund, only: %i[show update destroy]
 
   # GET /funds
   def index
@@ -39,13 +39,14 @@ class FundsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_fund
-      @fund = Fund.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def fund_params
-      params.require(:fund).permit(:name, :creation_date)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_fund
+    @fund = Fund.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def fund_params
+    params.require(:fund).permit(:name, :creation_date)
+  end
 end
