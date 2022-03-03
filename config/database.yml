@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV.fetch("DB_HOST") { 'client_funds_development' } %> 
+  database: <%= ENV.fetch("DB_NAME") { 'client_funds_development' } %> 
   username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
   password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %> 
   host:     <%= ENV.fetch("DB_HOST") { 'db' } %> 
@@ -60,7 +60,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: <%= ENV.fetch("DB_HOST") { 'client_funds_test' } %> 
+  database: <%= ENV.fetch("DB_NAME") { 'client_funds_test' } %> 
   username: <%= ENV.fetch("DB_USERNAME") { 'root' } %>
   password: <%= ENV.fetch("DB_PASSWORD") { 'root' } %> 
   host:     <%= ENV.fetch("DB_HOST") { 'db' } %> 
